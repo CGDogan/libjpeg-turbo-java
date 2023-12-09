@@ -29,7 +29,7 @@ jobs:
           cd build
           ../configure --with-java
           make
-          mv libjpeg-turbo/build/.libs/libturbojpeg.dylib libjpeg-turbo/build/.libs/libturbojpeg-arm64.dylib
+          mv build/.libs/libturbojpeg.dylib build/.libs/libturbojpeg-arm64.dylib
       - uses: actions/upload-artifact@v3
         if: failure()
         with:
