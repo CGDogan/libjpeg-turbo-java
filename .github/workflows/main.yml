@@ -25,7 +25,7 @@ jobs:
           export CPPFLAGS="-I${JAVA_HOME}/include -I${JAVA_HOME}/include/darwin"
           cd libjpeg-turbo
           autoreconf -fiv
-          mkdir build
+          rm -rf build && mkdir build
           cd build
           ../configure --with-java
           make
@@ -38,8 +38,8 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: artifacts-macos-x86_64
-          path: libjpeg-turbo/build/.libs/libturbojpeg.dylib
+          name: artifacts-macos-arm64
+          path: libjpeg-turbo/build/.libs/libturbojpeg-arm64.dylib
           if-no-files-found: error
   build-macos-x86_64:
     runs-on: macos-latest
@@ -193,4 +193,5 @@ jobs:
             artifacts-macos-x86_64/*.dylib
             artifacts-linux-x86_64/*.so
             artifacts-windows-x86_64/Debug/*.dll
+            artifacts-macos-arm64/*.dylib
             libjpeg-turbo-java/*.jar
