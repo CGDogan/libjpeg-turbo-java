@@ -6,6 +6,41 @@ on:
   pull_request:
 
 jobs:
+  build-macos-arm64:
+    runs-on: macos-latest-xlarge
+    steps:
+      - name: Checkout repository and submodules
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+      - name: Install build dependencies
+        run: brew install automake libtool nasm
+      - name: Build native code
+        run: |
+          export CPPFLAGS="-I${JAVA_HOME}/include -I${JAVA_HOME}/include/darwin"
+          cd libjpeg-turbo
+          autoreconf -fiv
+          mkdir build
+          cd build
+          ../configure --with-java
+          make
+          mv libjpeg-turbo/build/.libs/libturbojpeg.dylib libjpeg-turbo/build/.libs/libturbojpeg-arm64.dylib
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: configure log
+          path: libjpeg-turbo/build/config.log
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifacts-macos-x86_64
+          path: libjpeg-turbo/build/.libs/libturbojpeg.dylib
+          if-no-files-found: error
   build-macos-x86_64:
     runs-on: macos-latest
     steps:
