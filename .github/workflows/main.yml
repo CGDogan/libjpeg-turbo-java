@@ -6,7 +6,7 @@ on:
   pull_request:
 
 jobs:
-  build-macos-arm64:
+  build-macos-arm64d:
     runs-on: self-hosted
     steps:
       - name: Checkout repository and submodules
