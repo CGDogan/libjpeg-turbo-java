@@ -11,3 +11,4 @@ mkdir build
 cd build
 ../configure --with-java
 make
+ls .libs
