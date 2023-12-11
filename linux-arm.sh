@@ -14,3 +14,4 @@ cd build
 # https://github.com/CGDogan/libjpeg-turbo-java/new/master
 ../configure --with-java --build x86_64-pc-linux-gnu --host aarch64-linux-gnu LDFLAGS="-static"
 make
+mv .libs/libturbojpeg.dylib .libs/libturbojpeg-arm64.dylib
