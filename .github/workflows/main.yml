@@ -85,7 +85,7 @@ jobs:
       - name: Build native code
         run: |
           docker build -f Dockerfile2014_arm . -t native_builder
-          docker run -v $(pwd):/build --user ${UID} -t native_builder /build/linux-arm.sh
+          docker run -v $(pwd):/build --user ${UID} -t native_builder /build/linux_arm64.sh
       - uses: actions/upload-artifact@v3
         if: failure()
         with:
