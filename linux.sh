@@ -17,4 +17,4 @@ cd build
 make
 if [ "$(uname -i)" = aarch64 ]; then
     mv .libs/libturbojpeg.so .libs/libturbojpeg-arm64.so
-else
+fi
