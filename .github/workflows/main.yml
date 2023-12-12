@@ -95,7 +95,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: artifacts-linux-arm64
-          path: libjpeg-turbo/build/.libs/libturbojpeg.so
+          path: libjpeg-turbo/build/.libs/libturbojpeg-arm64.so
           if-no-files-found: error
   build-linux-x86_64:
     runs-on: ubuntu-latest
