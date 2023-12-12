@@ -15,6 +15,11 @@ mkdir -p META-INF/lib/osx_64
 mv ../../artifacts-macos-x86_64/libturbojpeg.dylib META-INF/lib/osx_64/
 mkdir -p META-INF/lib/linux_64
 mv ../../artifacts-linux-x86_64/libturbojpeg.so META-INF/lib/linux_64/
+mkdir -p META-INF/lib/osx_arm64
+mv ../../artifacts-macos-arm64/libturbojpeg.dylib META-INF/lib/osx_arm64/
+mkdir -p META-INF/lib/linux_arm64
+mv ../../artifacts-linux-arm64/libturbojpeg.dylib META-INF/lib/linux_arm64/
+
 
 # repack the jar file to include the native libraries
 jar uvvf libjpeg-turbo*.jar META-INF/lib/*
