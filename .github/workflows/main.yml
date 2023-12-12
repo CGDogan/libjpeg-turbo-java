@@ -216,4 +216,5 @@ jobs:
             artifacts-linux-x86_64/*.so
             artifacts-windows-x86_64/Debug/*.dll
             artifacts-macos-arm64/*.dylib
+            artifacts-linux-arm64/*.so
             libjpeg-turbo-java/*.jar
