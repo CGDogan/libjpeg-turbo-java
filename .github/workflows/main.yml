@@ -19,7 +19,7 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
       - name: Install build dependencies
-        run: brew install automake libtool nasm
+        run: brew install automake libtool
       - name: Build native code
         run: |
           export CPPFLAGS="-I${JAVA_HOME}/include -I${JAVA_HOME}/include/darwin"
@@ -151,7 +151,7 @@ jobs:
           path: libjpeg-turbo/build/**/turbojpeg.dll
           if-no-files-found: error
   build-package:
-    needs: [build-macos-x86_64, build-windows-x86_64, build-linux-x86_64]
+    needs: [build-macos-x86_64, build-windows-x86_64, build-linux-x86_64, build-macos-arm64, build-linux-arm64]
     runs-on: ubuntu-latest
     env:
       gradle_commands: --stacktrace clean jar
